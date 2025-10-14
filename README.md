@@ -38,8 +38,8 @@ Patient → Cloud API → AI Module → Doctor Dashboard → EMR
 - **Team Name:** NabhaTech  
 - **Lead:** Swathmika S S
 - **members:** Umamageshwari ,Subhasini, Subetha,Sarvajit 
-- **SoI Lab Code:** CD / AD / EI  
-- **Cohort:** 2025–29  
+- **SoI Lab Code:** CD 
+- **Cohort:** 2024-28
 
 ## License
 This project is part of the **SoI Proof of Concept Stage** and is shared for academic purposes only.
