@@ -36,7 +36,8 @@ Patient → Cloud API → AI Module → Doctor Dashboard → EMR
 
 ## Mentor & Team
 - **Team Name:** NabhaTech  
-- **Lead:** Umamageshwari Kumar  
+- **Lead:** Swathmika S S
+- **members:** Umamageshwari ,Subhasini, Subetha,Sarvajit 
 - **SoI Lab Code:** CD / AD / EI  
 - **Cohort:** 2025–29  
 
