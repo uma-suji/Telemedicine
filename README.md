@@ -35,7 +35,7 @@ Patient → Cloud API → AI Module → Doctor Dashboard → EMR
 - `future_scope.md` – Prototype plan (optional)
 
 ## Mentor & Team
-- **Team Name:** NabhaTech  
+- **Team Name:** RetroRoots
 - **Lead:** Swathmika S S
 - **members:** Umamageshwari ,Subhasini, Subetha,Sarvajit 
 - **SoI Lab Code:** CD 
