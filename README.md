@@ -1,4 +1,4 @@
-<img width="724" height="81" alt="image" src="https://github.com/user-attachments/assets/3f2df61c-f82d-4600-b02f-b104159ef34c" /># Telemedicine Access for Rural Healthcare – Nabha
+Telemedicine Access for Rural Healthcare – Nabha
 
 ## Overview
 This project aims to bridge the healthcare gap in rural areas of Nabha through a **cloud-based telemedicine platform**.  
