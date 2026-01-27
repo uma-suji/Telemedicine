@@ -1,4 +1,4 @@
-# Telemedicine Access for Rural Healthcare – Nabha
+<img width="724" height="81" alt="image" src="https://github.com/user-attachments/assets/3f2df61c-f82d-4600-b02f-b104159ef34c" /># Telemedicine Access for Rural Healthcare – Nabha
 
 ## Overview
 This project aims to bridge the healthcare gap in rural areas of Nabha through a **cloud-based telemedicine platform**.  
@@ -14,8 +14,8 @@ It enables **affordable, accessible, and timely healthcare** by connecting patie
 - 🔔 Notifications for reminders and follow-ups
 
 ## Tech Stack (Planned)
-- **Frontend:** React Native, React.js  
-- **Backend:** Node.js / Django REST, JWT  
+- **Frontend:**Python(Flask), HTML, CSS (Patient/Doctor)
+- **Backend:** Python(Flask), SQL
 - **Cloud:** AWS EC2 / Lambda / S3 / RDS  
 - **AI/ML:** Python, TensorFlow / Scikit-learn, spaCy  
 - **Teleconsultation:** Twilio, WebRTC  
@@ -26,7 +26,7 @@ It enables **affordable, accessible, and timely healthcare** by connecting patie
 Patient → Cloud API → AI Module → Doctor Dashboard → EMR
 
 ## Demo Video
-🎥 https://youtube.com/watch?v=YNv8LH5UsdM&feature=shared
+
 
 ## Repository Contents
 - `README.md` – Overview and documentation  
