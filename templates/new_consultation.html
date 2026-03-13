@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Request Consultation</h2>
+<p>Describe your symptoms. Our AI can help categorize them before a doctor sees you.</p>
+
+<form method="POST">
+  <div class="mb-3">
+    <label for="symptoms">Symptoms Description</label>
+    <textarea name="symptoms" class="form-control" placeholder="I have been experiencing headaches and..."></textarea>
+  </div>
+  <button type="button" class="btn btn-info">Check with AI</button>
+  <button type="submit" class="btn btn-primary">Submit Request</button>
+</form>
+{% endblock %}

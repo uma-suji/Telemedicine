@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📄 Consultation History</h2>
+
+{% if patients %}
+  {% for patient_id, data in patients.items() %}
+
+    <div class="card mb-3">
+
+      <div class="card-header">
+        <strong>Patient:</strong> {{ data.name }}
+
+        <a href="{{ url_for('main.patient_details', patient_id=patient_id) }}"
+           class="btn btn-primary btn-sm float-end">
+           View Details
+        </a>
+      </div>
+
+      <div class="card-body">
+
+        {% for c in data.consultations %}
+
+          <p><strong>Date:</strong> {{ c.created_at.strftime('%d-%m-%Y %I:%M %p') }}</p>
+
+          <table class="table table-sm">
+            {% for line in c.symptoms.split(',') %}
+              <tr>
+                <td>{{ line }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+
+          <p><strong>Status:</strong> {{ c.status }}</p>
+
+          <hr>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  {% endfor %}
+{% else %}
+  <div class="alert alert-info">No consultations yet.</div>
+{% endif %}
+
+{% endblock %}

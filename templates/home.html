@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="hero-section text-center">
+
+  <div class="hero-overlay">
+      <h1 class="hero-title">MediConnect</h1>
+      <p class="hero-subtitle">
+        Your health, our priority. Connect with doctors anytime, anywhere.
+      </p>
+
+      <div class="mt-4">
+          <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg me-3">Login</a>
+          <a href="{{ url_for('auth.register') }}" class="btn btn-success btn-lg">Register</a>
+      </div>
+
+      <!-- FEATURES INSIDE HERO -->
+      <div class="container mt-5">
+        <div class="row text-center">
+
+          <div class="col-md-4">
+            <h5>📅 Easy Appointments</h5>
+            <p>Book doctor visits online in seconds.</p>
+          </div>
+
+          <div class="col-md-4">
+            <h5>🩺 Online Consultations</h5>
+            <p>Connect with doctors anytime, anywhere.</p>
+          </div>
+
+          <div class="col-md-4">
+            <h5>💊 Pharmacy Finder</h5>
+            <p>Locate nearby pharmacies instantly.</p>
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<!-- CALL TO ACTION -->
+<div class="text-center mt-5 mb-5">
+  <h4>Ready to take charge of your health?</h4>
+  <a href="{{ url_for('auth.register') }}" class="btn btn-success btn-lg mt-3">
+    Get Started
+  </a>
+</div>
+
+{% endblock %}

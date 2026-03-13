@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.register-box {
+    max-width: 420px;   /* MEDIUM SIZE */
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+</style>
+
+<div class="register-box">
+    <h3 class="text-center mb-3">Create Account</h3>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-2">
+            {{ form.fullname.label }}
+            {{ form.fullname(class="form-control") }}
+        </div>
+
+        <div class="mb-2">
+            {{ form.username.label }}
+            {{ form.username(class="form-control") }}
+        </div>
+
+        <div class="mb-2">
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+        </div>
+
+        <div class="mb-2">
+            {{ form.role.label }}
+            {{ form.role(class="form-select", id="roleSelect") }}
+        </div>
+
+        <div class="mb-2" id="specializationField" style="display:none;">
+            {{ form.specialization.label }}
+            {{ form.specialization(class="form-control") }}
+        </div>
+
+        {{ form.submit(class="btn btn-success w-100 mt-3") }}
+    </form>
+</div>
+
+<script>
+const roleSelect = document.getElementById("roleSelect");
+const specField = document.getElementById("specializationField");
+
+function toggleSpec() {
+    specField.style.display = roleSelect.value === "doctor" ? "block" : "none";
+}
+toggleSpec();
+roleSelect.addEventListener("change", toggleSpec);
+</script>
+
+{% endblock %}

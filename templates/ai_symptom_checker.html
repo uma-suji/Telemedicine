@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card ai-card mt-4">
+    <div class="card-header bg-primary text-white">
+        🤖 AI Symptom Checker
+    </div>
+
+    <div class="card-body">
+        
+
+        <form method="POST">
+
+    <label class="form-label">
+        Type your symptoms:
+    </label>
+
+    <textarea class="form-control"
+              name="symptoms"
+              rows="4"
+              placeholder="Example: fever, headache, stomach pain"
+              required></textarea>
+
+    <button class="btn btn-primary mt-3">
+        Analyze Symptoms
+    </button>
+</form>
+
+        {% if result %}
+        <div class="alert alert-info mt-4">
+            <strong>AI Suggestion:</strong><br>
+            {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

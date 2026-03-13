@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>📹 My Video Consultations</h3>
+
+{% if appointments %}
+
+    {% for a in appointments %}
+        <div class="card p-3 mb-3">
+            <p><strong>Doctor:</strong> Dr. {{ a.doctor.fullname }}</p>
+            <p><strong>Date:</strong> {{ a.appointment_date }}</p>
+            <p><strong>Time:</strong> {{ a.appointment_time }}</p>
+
+            <a href="{{ url_for('main.video_call', appointment_id=a.id) }}"
+               class="btn btn-success">
+               📹 Join Video Call with Dr. {{ a.doctor.fullname }}
+            </a>
+        </div>
+    {% endfor %}
+
+{% else %}
+    <p class="text-muted">No booked appointments available for video call.</p>
+{% endif %}
+
+{% endblock %}

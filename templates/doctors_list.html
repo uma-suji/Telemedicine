@@ -1,0 +1,22 @@
+<h2>Available Doctors</h2>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Specialization</th>
+    <th>Action</th>
+  </tr>
+  {% for d in doctors %}
+    <tr>
+      <td>{{ d.name }}</td>
+      <td>{{ d.specialization }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('main.book_appointment') }}">
+          <input type="hidden" name="doctor_id" value="{{ d.id }}">
+          <input type="date" name="appointment_date" required>
+          <input type="time" name="appointment_time" required>
+          <button type="submit">Book Appointment</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+</table>

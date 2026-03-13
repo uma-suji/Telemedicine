@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Step 2: Doctor Selection</h2>
+<p>Select a doctor for consultation.</p>
+<form method="POST" action="{{ url_for('main.done') }}">
+  <select name="doctor" class="form-select">
+    <option>Dr. Uma</option>
+    <option>Dr. John</option>
+    <option>Dr. Swathmika</option>
+  </select><br>
+  <button type="submit" class="btn btn-primary">Next</button>
+</form>
+{% endblock %}

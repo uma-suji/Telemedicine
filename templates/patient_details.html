@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Patient Details</h2>
+
+{% if record %}
+<p><b>Patient ID:</b> {{ record.patient_id }}</p>
+<p><b>Doctor ID:</b> {{ record.doctor_id }}</p>
+<p><b>Age:</b> {{ record.age }}</p>
+<p><b>DOB:</b> {{ record.dob }}</p>
+<p><b>Phone:</b> {{ record.phone_number }}</p>
+<p><b>Weight:</b> {{ record.weight }}</p>
+<p><b>Height:</b> {{ record.height }}</p>
+<p><b>Blood Pressure:</b> {{ record.blood_pressure }}</p>
+<p><b>Heart Rate:</b> {{ record.heart_rate }}</p>
+<p><b>Diagnosis:</b> {{ record.diagnosis }}</p>
+<p><b>Prescription:</b> {{ record.prescription }}</p>
+<p><b>Nearby Pharmacy:</b> {{ record.nearby_pharmacy }}</p>
+<p><b>Last Checkup:</b> {{ record.last_checkup }}</p>
+<p><b>Last Consultation:</b> {{ record.last_consultation }}</p>
+<p><b>Address:</b> {{ record.address }}</p>
+{% else %}
+<p>No record found.</p>
+{% endif %}
+
+<hr>
+
+<h3>Consultation History</h3>
+{% if consultations %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Doctor</th>
+      <th>Diagnosis</th>
+      <th>Prescription</th>
+      <th>Vitals</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in consultations %}
+    <tr>
+      <td>{{ c.created_at.strftime('%d-%m-%Y %I:%M %p') }}</td>
+      <td>{{ c.doctor.fullname }}</td>
+      <td>{{ c.symptoms }}</td>
+      <td>{{ c.prescription }}</td>
+      <td>BP: {{ c.blood_pressure }} | HR: {{ c.heart_rate }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No consultations yet.</p>
+{% endif %}
+
+{% endblock %}

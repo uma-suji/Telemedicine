@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Patient Medical Record</h2>
+
+<form method="POST">
+
+<h5>Patient: {{ patient.fullname }}</h5>
+<hr>
+
+<label>Phone Number:</label>
+<input type="text" name="phone_number" class="form-control"
+       value="{{ record.phone_number if record else '' }}">
+
+<label>Age:</label>
+<input type="number" name="age" class="form-control"
+       value="{{ record.age if record else '' }}">
+
+<label>Date of Birth:</label>
+<input type="text" name="dob" class="form-control"
+       value="{{ record.dob if record else '' }}">
+
+<label>Weight (kg):</label>
+<input type="text" name="weight" class="form-control"
+       value="{{ record.weight if record else '' }}">
+
+<label>Height (cm):</label>
+<input type="text" name="height" class="form-control"
+       value="{{ record.height if record else '' }}">
+
+<label>Blood Pressure:</label>
+<input type="text" name="blood_pressure" class="form-control"
+       value="{{ record.blood_pressure if record else '' }}">
+
+<label>Heart Rate:</label>
+<input type="number" name="heart_rate" class="form-control"
+       value="{{ record.heart_rate if record else '' }}">
+
+<label>Address:</label>
+<textarea name="address" class="form-control">
+{{ record.address if record else '' }}
+</textarea>
+
+<p><strong>Last Checkup:</strong>
+{{ record.last_checkup.strftime('%d-%m-%Y %I:%M %p') if record and record.last_checkup else 'No record yet' }}
+</p>
+
+<p><strong>Last Consultation:</strong>
+{{ record.last_consultation.strftime('%d-%m-%Y %I:%M %p') if record and record.last_consultation else 'No record yet' }}
+</p>
+<label>Doctor Diagnosis:</label>
+<textarea name="diagnosis" class="form-control">
+{{ record.diagnosis if record else '' }}
+</textarea>
+
+<br>
+
+<label>Prescription:</label>
+<textarea name="prescription" class="form-control">
+{{ record.prescription if record else '' }}
+</textarea>
+<label>Nearby Pharmacy:</label>
+<input type="text" name="nearby_pharmacy" class="form-control"
+       value="{{ record.nearby_pharmacy if record else '' }}">
+<button type="submit" class="btn btn-primary mt-3">
+Save Record
+</button>
+
+</form>
+
+{% endblock %}

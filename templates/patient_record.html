@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Medical History</h2>
+
+<h3>Consultations</h3>
+{% if consultations %}
+  {% for c in consultations %}
+    <p>
+      <b>Date:</b> {{ c.created_at.strftime('%Y-%m-%d') }} <br>
+      <b>Symptoms:</b> {{ c.symptoms }}
+    </p>
+    <hr>
+  {% endfor %}
+{% else %}
+  <p>No consultations yet.</p>
+{% endif %}
+
+<h3>Vitals History</h3>
+{% if vitals %}
+  {% for v in vitals %}
+    <p>
+      <b>Date:</b> {{ v.created_at.strftime('%Y-%m-%d') }} <br>
+      <b>Weight:</b> {{ v.weight }} kg <br>
+      <b>Height:</b> {{ v.height }} cm <br>
+      <b>Blood Pressure:</b> {{ v.blood_pressure }} <br>
+      <b>Heart Rate:</b> {{ v.heart_rate }} <br>
+      <b>Doctor Notes:</b> {{ v.diagnosis }}<br>
+      <b>Prescription:</b> {{ v.prescription }}
+      <b>Nearby Pharmacy:</b> {{ v.nearby_pharmacy }}
+    </p>
+    <hr>
+  {% endfor %}
+{% else %}
+  <p>No vitals recorded yet.</p>
+{% endif %}
+
+{% endblock %}

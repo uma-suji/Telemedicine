@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Step 1: Enter Symptoms</h2>
+<p>Please describe your symptoms.</p>
+<form method="POST" action="{{ url_for('main.step2') }}">
+  <textarea name="symptoms" class="form-control" rows="4"></textarea><br>
+  <button type="submit" class="btn btn-primary">Next</button>
+</form>
+{% endblock %}

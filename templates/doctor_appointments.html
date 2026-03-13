@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">📅 Patient Appointments</h2>
+
+{% if appointments %}
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Patient Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in appointments %}
+            <tr>
+                <td>{{ a.patient.fullname }}</td>
+                <td>{{ a.appointment_date }}</td>
+                <td>{{ a.appointment_time }}</td>
+
+                <!-- ✅ STATUS COLUMN -->
+                <td>
+                    {% if a.status == "Completed" %}
+                        <span class="badge bg-success">Completed</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">Booked</span>
+                    {% endif %}
+                </td>
+
+                <!-- ✅ ACTION COLUMN -->
+                <td>
+                    {% if a.status == "Booked" %}
+                        <a href="{{ url_for('main.add_patient_record', appointment_id=a.id) }}"
+                           class="btn btn-sm btn-success">
+                           ➕ Add Record
+                        </a>
+                    {% else %}
+                        <span class="text-muted">No Action</span>
+                    {% endif %}
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-info">
+        No appointments scheduled.
+    </div>
+{% endif %}
+
+{% endblock %}

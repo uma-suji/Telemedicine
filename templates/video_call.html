@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Consultation</title>
+</head>
+<body>
+
+<h2>Video Consultation</h2>
+
+<p>
+Appointment ID: {{ appointment.id }} <br>
+Doctor: Dr. {{ appointment.doctor.fullname }} <br>
+Patient: {{ appointment.patient.fullname }}
+</p>
+
+<a href="https://meet.jit.si/telemedicine-appointment-{{ appointment.id }}"
+   target="_blank"
+   style="padding:10px 20px;
+          background-color:green;
+          color:white;
+          text-decoration:none;
+          border-radius:5px;">
+   Join Video Call
+</a>
+
+</body>
+</html>

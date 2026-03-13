@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>👨‍⚕️ Welcome, Dr. {{ current_user.fullname }}</h2>
+<p>Your professional telemedicine dashboard</p>
+
+<!-- Quick Actions -->
+<a href="{{ url_for('main.doctor_appointments') }}" class="btn btn-primary">📋 View Appointments</a>
+<a href="{{ url_for('main.doctor_consultations') }}" class="btn btn-outline-secondary">🩺 Consultation History</a>
+
+<!-- Summary Cards -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>Appointments</h4>
+        {% if appointments %}
+            <ul>
+                {% for appt in appointments %}
+                    <li>
+                        Patient: {{ appt.patient.fullname }} |
+                        Date: {{ appt.appointment_date }} |
+                        Time: {{ appt.appointment_time }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>Consultations</h4>
+        {% if consultations %}
+            <ul>
+                {% for consult in consultations %}
+                    <li>
+                        Patient: {{ consult.patient.fullname }} |
+                        Symptoms: {{ consult.symptoms }} |
+                        Date: {{ consult.created_at.strftime('%d-%m-%Y %I:%M %p') }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No consultations yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>Patient Records</h4>
+        {% if records %}
+            <ul>
+                {% for record in records %}
+                    <li>
+                        Patient: {{ record.patient.fullname }} |
+                        Age: {{ record.age }} |
+                        BP: {{ record.blood_pressure }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No patient records yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Services Grid -->
+<h3 class="mt-5">🧰 Services</h3>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>📋 Patient Appointments</h5>
+            <p>View scheduled patients</p>
+            <a href="{{ url_for('main.doctor_appointments') }}" class="btn btn-sm btn-primary">View</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>🩺 Consultation History</h5>
+            <p>Previous consultations</p>
+            <!-- FIXED: doctor_history → doctor_consultations -->
+            <a href="{{ url_for('main.doctor_consultations') }}" class="btn btn-sm btn-secondary">Open</a>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="card p-3">
+            <h5>📹 Video Consultation</h5>
+            <p>Connect with patient</p>
+
+            {% set booked_appointments = appointments | selectattr("status", "equalto", "Booked") | list %}
+
+            {% if booked_appointments %}
+                {% for appt in booked_appointments %}
+                    <div class="mb-2">
+                        <strong>Patient:</strong> {{ appt.patient.fullname }} <br>
+                        <a href="{{ url_for('main.video_call', appointment_id=appt.id) }}"
+                           class="btn btn-info btn-sm mt-1">
+                           📹 Start Video Call
+                        </a>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">No booked appointments yet</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="card p-3">
+            <h5>💊 Nearby Pharmacy</h5>
+            <p>Find medicines</p>
+            <a href="https://www.google.com/maps/search/nearby+pharmacy/"
+               target="_blank"
+               class="btn btn-sm btn-warning">
+               Search
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

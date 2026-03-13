@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">🩺 Consultation History</h2>
+
+{% if consultations %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Symptoms</th>
+            <th>Status</th>
+            <th>Last Checkup</th>
+            <th>Last Doctor</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in consultations %}
+        <tr>
+            <td>{{ c.patient.fullname }}</td>
+            <td>{{ c.symptoms }}</td>
+            <td>{{ c.status }}</td>
+            <td>
+                {% if c.patient.patientrecord %}
+                    {{ c.patient.patientrecord.last_checkup.strftime('%d-%m-%Y %I:%M %p') }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                {% if c.patient.patientrecord %}
+                    {{ c.patient.patientrecord.doctor.fullname }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>{{ c.created_at.strftime('%d-%m-%Y %I:%M %p') }}</td>
+            <td>
+                {% if c.status != "Completed" %}
+                <form action="{{ url_for('main.complete_consultation', consultation_id=c.id) }}" method="POST">
+                    <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                </form>
+                {% else %}
+                ✅ Completed
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No consultations found.</p>
+{% endif %}
+
+{% endblock %}

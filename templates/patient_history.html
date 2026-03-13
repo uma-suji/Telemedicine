@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🩺 My Consultation History</h2>
+
+{% if consultations %}
+  {% for c in consultations %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <strong>Doctor:</strong> {{ c.doctor.fullname }}
+        <button class="btn btn-link float-end" type="button" data-bs-toggle="collapse" data-bs-target="#consult{{ c.id }}">
+          View Details
+        </button>
+      </div>
+      <div id="consult{{ c.id }}" class="collapse">
+        <div class="card-body">
+          <p><strong>Date:</strong> {{ c.created_at.strftime('%d-%m-%Y %I:%M %p') }}</p>
+          <table class="table table-sm">
+  {% for line in c.symptoms.split('\n') %}
+    {% if line.strip() %}
+      <tr>
+        <td>{{ line }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+
+          <p><strong>Status:</strong> {{ c.status }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="alert alert-info">No consultations yet.</div>
+{% endif %}
+{% endblock %}
